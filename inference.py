@@ -17,7 +17,7 @@ MODEL_ID = "openbmb/MiniCPM-o-2_6"
 #MODEL_ID = "google/gemma-1.1-7b-it"
 #MODEL_ID = "meta-llama/Meta-Llama-3-8B-Instruct"
 
-model = AutoModelForCausalLM.from_pretrained(MODEL_ID, trust_remote_code=True, device_map="cuda", quantization_config=BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16))
+model = AutoModelForCausalLM.from_pretrained(MODEL_ID, trust_remote_code=True, device_map="cuda")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
 
 refusal_dir = torch.load(MODEL_ID.replace("/", "_") + "_refusal_dir.pt")
